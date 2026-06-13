@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axnovus MediSalt AI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.7.76/pdf.min.mjs" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div class="brand-title">
+            <div class="brand-mark">
+              <img src="https://www.axnovus.com/assets/images/logo.png" alt="Axnovus logo" />
+              <span>AXNOVUS</span>
+            </div>
+            <p class="eyebrow">Medicine salt alternative search</p>
+            <h1>Axnovus MediSalt AI</h1>
+          </div>
+          <div class="status-pill" id="databaseStatus">Loading database</div>
+        </header>
+
+        <section class="input-panel" aria-label="Medicine input">
+          <div class="tabs" role="tablist" aria-label="Input method">
+            <button class="tab active" data-tab="typed" type="button">Name</button>
+            <button class="tab" data-tab="scan" type="button">Prescription</button>
+            <button class="tab" data-tab="text" type="button">Text</button>
+          </div>
+
+          <div class="tab-panel active" id="typed">
+            <label for="medicineInput">Medicine name</label>
+            <div class="search-row">
+              <input id="medicineInput" autocomplete="off" placeholder="e.g. Augmentin 625, Crocin Advance, Telma 40" />
+              <button id="searchButton" type="button">Search</button>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="scan">
+            <label for="fileInput">Prescription image, PDF, DOCX, or TXT</label>
+            <div class="file-row">
+              <input id="fileInput" type="file" accept="image/*,.pdf,.docx,.txt" />
+              <button id="extractButton" type="button">Read file</button>
+            </div>
+            <div class="progress" id="ocrProgress" aria-live="polite"></div>
+          </div>
+
+          <div class="tab-panel" id="text">
+            <label for="freeText">Prescription text</label>
+            <textarea id="freeText" placeholder="Paste prescription text here. The agent will detect likely medicine names."></textarea>
+            <button id="detectButton" type="button">Detect medicines</button>
+          </div>
+        </section>
+
+        <section class="detected-panel" aria-label="Detected medicines">
+          <div class="section-title">
+            <h2>Detected medicines</h2>
+            <button class="ghost" id="clearButton" type="button">Clear</button>
+          </div>
+          <div id="detectedList" class="chips empty">No medicines selected yet.</div>
+        </section>
+
+        <section class="results-panel" aria-label="Medicine results">
+          <div class="section-title">
+            <h2>Salt alternatives</h2>
+            <div class="legend">
+              <span><i class="dot exact"></i>Exact salt</span>
+              <span><i class="dot close"></i>Close salt</span>
+              <span><i class="dot partial"></i>Partial</span>
+            </div>
+          </div>
+          <div id="results" class="results empty-state">
+            Enter or extract a medicine name to compare salts and prices.
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
