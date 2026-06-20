@@ -1,0 +1,4 @@
+Axnovus MediSalt AI running at http://localhost:8000
+{"event":"search","requestId":"bff0a70e-829a-40ba-af3b-63ec48593fd5","timestamp":"2026-06-03T13:23:56.480Z","query":"Augmentin 625","resultCount":3}
+{"event":"search","requestId":"fa9a50dd-ee5e-49d5-b407-ec15317a2dd0","timestamp":"2026-06-13T11:47:44.681Z","query":"Dolo600","resultCount":6}
+{"event":"search","requestId":"ca4e457c-4f80-4114-bb31-7f3105970288","timestamp":"2026-06-13T11:51:17.027Z","query":"Crocin Advance","resultCount":4}
